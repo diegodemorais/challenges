@@ -1,0 +1,17 @@
+static long getWays(int n, int[] coinArray) {
+        long[] ammountArray = new long[n + 1];
+        
+        ammountArray[0] = 1;
+        
+        for (int coinIndex = 0; coinIndex < coinArray.length; coinIndex++) {
+            int coin = coinArray[coinIndex];
+            
+            for (int ammountIndex = coin; ammountIndex < ammountArray.length; ammountIndex++) {
+                int ammount = ammountIndex;
+               
+                ammountArray[ammountIndex] += ammountArray[ammount - coin];
+            }
+        }
+        
+        return ammountArray[n];
+    }
